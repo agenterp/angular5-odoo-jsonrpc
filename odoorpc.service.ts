@@ -185,14 +185,15 @@ export class OdooRPCService {
         return this.sendRequest("/web/database/get_list", {});
     }
 
-    public searchRead(model: string, domain: any, fields: any, limit: number, offset: number, context: any = {}) {
+    public searchRead(model: string, domain: any, fields: any, limit: number, offset: number, context: any = {}, sort?: string) {
         let params = {
             model: model,
             domain: domain,
             fields: fields,
             limit: limit,
             offset: offset,
-            context: context || this.context
+            context: context || this.context,
+            sort: sort || ''
         };
         return this.sendRequest("/web/dataset/search_read", params);
     }
